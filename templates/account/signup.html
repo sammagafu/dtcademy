@@ -17,7 +17,7 @@
        <div class="row">
           <div class="col-xxl-8 offset-xxl-2 col-xl-8 offset-xl-2">
              <div class="section__title-wrapper text-center mb-55">
-                <h2 class="section__title">Sign in to <br>  Day Trading Academy</h2>
+                <h2 class="section__title">Create account  <br>  Day Trading Academy</h2>
                 <p>it you don't have an account you can <a href="{% url 'account_signup' %}">Register here!</a></p>
              </div>
           </div>
@@ -34,14 +34,10 @@
                    <form action="" method="post">
                        {% csrf_token %}
                       {{ form|crispy }}
-                      <div class="sign__action d-sm-flex justify-content-between mb-30">
-                         <div class="sign__forgot">
-                            <a href="{% url 'account_reset_password' %}">Forgot your password?</a>
-                         </div>
-                      </div>
-                      <button class="e-btn  w-100"> <span></span> Sign In</button>
+                      
+                      <button type="submit" class="e-btn  w-100"> <span></span> Sign In</button>
                       <div class="sign__new text-center mt-20">
-                         <p>New to DTT <a href="{% url 'account_signup' %}">Sign Up</a></p>
+                         <p>Already a member <a href="{% url 'account_login' %}">login</a></p>
                       </div>
                    </form>
                 </div>
