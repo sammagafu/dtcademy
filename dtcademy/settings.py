@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pages',
+    'crispy_forms',
     # 'accounts',
     'quiz',
     'multichoice',
