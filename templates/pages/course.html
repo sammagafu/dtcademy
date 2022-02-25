@@ -1,0 +1,81 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="page__title-area page__title-height page__title-overlay d-flex align-items-center" data-background="assets/img/page-title/page-title.jpg" style="background-image: url(&quot;assets/img/page-title/page-title.jpg&quot;);">
+    <div class="container">
+       <div class="row">
+          <div class="col-xxl-12">
+             <div class="page__title-wrapper mt-110">
+                <h3 class="page__title">Courses</h3>                         
+                <nav aria-label="breadcrumb">
+                   <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a href="{% url 'pages:home' %}">Home</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Courses</li>
+                   </ol>
+                </nav>
+             </div>
+          </div>
+       </div>
+    </div>
+ </section>
+
+ <section class="course__area pt-120 pb-120">
+    <div class="container">
+       <div class="row">
+          {% for course in course %}
+
+          <div class="col-xxl-12">
+            <div class="course__item white-bg mb-30 fix">
+               <div class="row gx-0">
+                  <div class="col-xxl-4 col-xl-4 col-lg-4">
+                     <div class="course__thumb course__thumb-list w-img p-relative fix">
+                        <a href="{{ course.get_absolute_url }}">
+                           <img src="{{ course.cover.url }}" alt="">
+                        </a>
+                        <div class="course__tag">
+                           <a href="#">{{ course.category }}</a>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xxl-8 col-xl-8 col-lg-8">
+                     <div class="course__right">
+                        <div class="course__content course__content-3">
+                           <div class="course__meta d-flex align-items-center">
+                              <div class="course__lesson mr-20">
+                                 <span><i class="far fa-book-alt"></i>43 Lesson</span>
+                              </div>
+                              <div class="course__rating">
+                                 <span><i class="icon_star"></i>4.5 (44)</span>
+                              </div>
+                           </div>
+                           <h3 class="course__title course__title-3">
+                              <a href="{{ course.get_absolute_url }}">{{ course.cousername }}</a>
+                           </h3>
+                           <div class="course__summary">
+                              <p>{{ course.introduction }}</p>
+                           </div>
+                        </div>
+                        <div class="course__more course__more-2 d-flex justify-content-between align-items-center">
+                           <div class="course__status">
+                              <span>$ {{ course.price }}</span>
+                           </div>
+                           <div class="course__btn">
+                              <a href="{{ course.get_absolute_url }}" class="link-btn">
+                                 Know Details
+                                 <i class="far fa-arrow-right"></i>
+                                 <i class="far fa-arrow-right"></i>
+                              </a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+          {% endfor %}
+       </div>
+    </div>
+ </section>
+{% endblock content %}
+
