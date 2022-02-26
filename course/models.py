@@ -22,6 +22,14 @@ class CourseCategory(models.Model):
         verbose_name_plural = 'Courses Categories'
 
 class Course(models.Model):
+
+    COURSE_LEVEL = [
+    ('Beginner', 'Beginner'),
+    ('Intermididate', 'Intermididate'),
+    ('Expert', 'Expert'),
+]
+
+
     cover = models.ImageField(verbose_name=_("Course Cover"),upload_to="course/cover/",blank=False,null=False)
     video = models.CharField(max_length=200,blank=False,null=False,verbose_name=_("Intro video"))
     cousername = models.CharField(max_length=50,verbose_name=_("Course Name"))
@@ -31,6 +39,8 @@ class Course(models.Model):
     price = models.FloatField(verbose_name=_("Course price"))
     description = models.TextField(verbose_name=_("Course Full Description"))
     viewed = models.IntegerField(editable=False,default=0)
+    featured = models.BooleanField(_("Featured"),default=False)
+    level = models.CharField(max_length=50, verbose_name=_("Course Level"),choices=COURSE_LEVEL,default="Beginner")
     created = models.DateTimeField()
     updated = models.DateTimeField()
 
