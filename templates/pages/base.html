@@ -77,19 +77,30 @@
                               <li><a href="{% url 'pages:home' %}">Home</a></li>
                               <li><a href="{% url 'course:list' %}">Course</a></li>
                               <li><a href="{% url 'blog:list' %}">Blog</a></li>
-                              <li><a href="contact.html">Contact</a></li>
+                              <li><a href="{% url 'pages:contact' %}">Contact</a></li>
                            </ul>
                         </nav>
                      </div>
                   </div>
+
                   <div class="col-xxl-5 col-xl-5 col-lg-6 col-md-6 col-sm-6 col-6">
                      <div class="header__right d-flex justify-content-end align-items-center">
+                        {% if user.is_authenticated == False %}
                         <div class="header__btn header__btn-2 ml-30 d-none d-sm-block">
                            <a href="{% url 'account_signup' %}" class="e-btn">Sign up</a>
                         </div>
                         <div class="header__btn header__btn-2 ml-30 d-none d-sm-block">
                            <a href="{% url 'account_login' %}" class="e-btn">Login</a>
                         </div>
+                        {% else %}
+                        <div class="header__btn header__btn-2 ml-30 d-none d-sm-block">
+                           <a href="{% url 'dashboard:index' %}" class="e-btn">Dashboard</a>
+                        </div>
+
+                        <div class="header__btn header__btn-2 ml-30 d-none d-sm-block">
+                           <a href="{% url 'account_logout' %}" class="e-btn">Logout</a>
+                        </div>
+                        {% endif %}
                         <div class="sidebar__menu d-xl-none">
                            <div class="sidebar-toggle-btn sidebar-toggle-btn-white ml-30" id="sidebar-toggle">
                                <span class="line"></span>

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'course',
     'blog',
+    'dashboard',
     # 'accounts',
     'quiz',
     'multichoice',

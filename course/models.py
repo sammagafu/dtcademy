@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 from django.utils.translation import gettext as _
 from django.utils.text import slugify
@@ -33,7 +34,7 @@ class Course(models.Model):
     cover = models.ImageField(verbose_name=_("Course Cover"),upload_to="course/cover/",blank=False,null=False)
     video = models.CharField(max_length=200,blank=False,null=False,verbose_name=_("Intro video"))
     cousername = models.CharField(max_length=50,verbose_name=_("Course Name"))
-    category = models.ForeignKey(CourseCategory, verbose_name=_("Course Category"), on_delete=models.CASCADE)
+    category = models.ForeignKey(CourseCategory, verbose_name=_("Course Category"), on_delete=models.DO_NOTHING)
     slug = models.SlugField(_("slug"),editable=False)
     introduction = models.TextField(verbose_name=_("Course Short Brief"))
     price = models.FloatField(verbose_name=_("Course price"))
@@ -63,9 +64,11 @@ class Course(models.Model):
 
 
 class CourseCurricullum(models.Model):
-    title = models.CharField(max_length=160,verbose_name=_("curricullum time"))
+    course = models.ForeignKey(Course, verbose_name=_(""), on_delete=models.DO_NOTHING)
+    title = models.CharField(max_length=160,verbose_name=_("curricullum Name"))
     viewed = models.IntegerField(editable=False,default=0)
     video = models.CharField(max_length=200,blank=False,null=False)
+    video_time = models.IntegerField(default=5,verbose_name=_("Video Time"))
     slug = models.SlugField(_("slug"),editable=False)
 
     class Meta:
@@ -82,10 +85,10 @@ class CourseCurricullum(models.Model):
 
 
 class CourseDocuments(models.Model):
+    course = models.ForeignKey(Course, verbose_name=_("Course"), on_delete=models.DO_NOTHING)
     downloaded = models.IntegerField(editable=False,default=0)
     title = models.CharField(max_length=50,verbose_name=_("curricullum time"))
     document = models.FileField(verbose_name=_("Documents"),upload_to="course/document/",blank=False,null=False)
-    course = models.ForeignKey(CourseCurricullum, verbose_name=_("curricullum document"), on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Course Documents'

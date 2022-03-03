@@ -307,28 +307,30 @@
                   </div>
                </div>
                <div class="row">
+                  {% for blog in blog %}
                   <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
                      <div class="blog__item white-bg mb-30 transition-3 fix">
                         <div class="blog__thumb w-img fix">
-                           <a href="blog-details.html">
-                              <img src="{% static 'assets/img/blog/blog-1.jpg' %}" alt="">
+                           <a href="{{ blog.get_absolute_url }}">
+                              <img src="{{ blog.cover.url }}" alt="">
                            </a>
                         </div>
                         <div class="blog__content">
                            <div class="blog__tag">
-                              <a href="#">Art & Design</a>
+                              {% for cat in blog.category_set.all %}<a href="#">{{ cat.name }}</a>{% endfor %}
+                              
                            </div>
-                           <h3 class="blog__title"><a href="blog-details.html">The Challenge Of Global Learning In Public Education</a></h3>
+                           <h3 class="blog__title"><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h3>
 
                            <div class="blog__meta d-flex align-items-center justify-content-between">
                               <div class="blog__date d-flex align-items-center">
                                  <i class="fal fa-clock"></i>
-                                 <span>April 02, 2022</span>
+                                 <span>{{ blog.published_date }}</span>
                               </div>
                            </div>
                         </div>
                      </div>
-                  </div>
+                  </div>{% endfor %}
                </div>
             </div>
          </section>

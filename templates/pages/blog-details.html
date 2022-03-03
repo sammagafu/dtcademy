@@ -1,0 +1,100 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="page__title-area page__title-height-2 page__title-overlay d-flex align-items-center" data-background="assets/img/page-title/page-title-3.jpg" style="background-image: url(&quot;assets/img/page-title/page-title-3.jpg&quot;);">
+    <div class="page__title-shape">
+       <img class="page-title-shape-1" src="{% static 'assets/img/page-title/page-title-shape-1.png' %}" alt="">
+       <img class="page-title-shape-2" src="{% static 'assets/img/page-title/page-title-shape-2.png' %}" alt="">
+       <img class="page-title-shape-3" src="{% static 'assets/img/page-title/page-title-shape-3.png' %}" alt="">
+       <img class="page-title-shape-4" src="{% static 'assets/img/page-title/page-title-shape-4.png' %}" alt="">
+    </div>
+    <div class="container">
+       <div class="row">
+          <div class="col-xxl-10 col-xl-10 col-lg-10 ">
+             <div class="page__title-wrapper mt-110">
+                {% comment %} <span class="page__title-pre">Development</span> {% endcomment %}
+                <h3 class="page__title-2">{{ blog.title }}</h3> 
+                <div class="blog__meta d-flex align-items-center">
+                   <div class="blog__author d-flex align-items-center mr-40">
+                   </div>
+
+                   <div class="blog__date blog__date-2 d-flex align-items-center">
+                      <i class="fal fa-clock"></i>
+                      <span>{{ blog.published_date }}</span>
+                   </div>
+                </div>                      
+             </div>
+          </div>
+       </div>
+    </div>
+ </section>
+
+ <section class="blog__area pt-120 pb-120">
+    <div class="container">
+       <div class="row">
+          <div class="col-xxl-8 col-xl-8 col-lg-8">
+             <div class="blog__wrapper">
+                 <div class="blog__img w-img mb-45">
+                   <img src="{{ blog.cover.url }}" alt="">
+                </div>
+                <div class="blog__text mb-40">
+                   {{ blog.content.html|safe }}
+                </div>
+                <div class="blog__line"></div>
+                <div class="blog__meta-3 d-sm-flex justify-content-between align-items-center mb-80">
+                
+                   <div class="blog__social d-flex align-items-center">
+                      <h4>Share:</h4>
+                      <ul>
+                         <li><a href="#" class="fb"><i class="social_facebook"></i></a></li>
+                         <li><a href="#" class="tw"><i class="social_twitter"></i></a></li>
+                         <li><a href="#" class="pin"><i class="social_pinterest"></i></a></li>
+                      </ul>
+                   </div>
+                </div>
+                <div class="blog__comment">
+                   <h3>Write a Review</h3>
+                   <form action="#">
+                      <div class="row">
+                         <div class="col-xxl-6 col-xl-6 col-lg-6">
+                            <div class="blog__comment-input">
+                               <input type="text" placeholder="Your Name">
+                            </div>
+                         </div>
+                         <div class="col-xxl-6 col-xl-6 col-lg-6">
+                            <div class="blog__comment-input">
+                               <input type="email" placeholder="Your Email">
+                            </div>
+                         </div>
+                         <div class="col-xxl-12">
+                            <div class="blog__comment-input">
+                               <input type="text" placeholder="Website">
+                            </div>
+                         </div>
+                         <div class="col-xxl-12">
+                            <div class="blog__comment-input">
+                               <textarea placeholder="Enter your comment ..."></textarea>
+                            </div>
+                         </div>
+                         <div class="col-xxl-12">
+                            <div class="blog__comment-agree d-flex align-items-center mb-20">
+                               <input class="e-check-input" type="checkbox" id="e-agree">
+                               <label class="e-check-label" for="e-agree">Save my name, email, and website in this browser for the next time I comment.</label>
+                            </div>
+                         </div>
+                         <div class="col-xxl-12">
+                            <div class="blog__comment-btn">
+                               <button type="submit" class="e-btn">Post Comment</button>
+                            </div>
+                         </div>
+                      </div>
+                   </form>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </section>
+
+{% endblock content %}
