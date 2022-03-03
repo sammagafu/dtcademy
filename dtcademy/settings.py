@@ -40,11 +40,13 @@ INSTALLED_APPS = [
     'pages',
     'crispy_forms',
     'course',
+    'blog',
     # 'accounts',
     'quiz',
     'multichoice',
     'true_false',
 	'essay',
+    'django_quill',
     # all auth goes down here
     'allauth',
     'allauth.account',
